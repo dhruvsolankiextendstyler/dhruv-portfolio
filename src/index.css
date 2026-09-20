@@ -457,7 +457,8 @@ button {
 }
 
 .project-card.violet:after,
-.project-card.blue:after {
+.project-card.blue:after,
+.project-card.amber:after {
   content: "";
   position: absolute;
   width: 320px;
@@ -474,6 +475,10 @@ button {
 
 .project-card.blue:after {
   background: rgba(50, 101, 212, 0.15);
+}
+
+.project-card.amber:after {
+  background: rgba(245, 176, 45, 0.15);
 }
 
 .project-number {
@@ -495,6 +500,16 @@ button {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 9px;
+}
+
+.project-link {
+  color: #d6d6d6;
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+.project-link:hover {
+  color: #fff;
 }
 
 .project-content h3 {
@@ -585,6 +600,11 @@ button {
 .blue .project-shape:after {
   background: #5b8cff;
   box-shadow: 0 0 20px #5b8cff;
+}
+
+.amber .project-shape:after {
+  background: #fbbf24;
+  box-shadow: 0 0 20px #fbbf24;
 }
 
 .project-shape span {

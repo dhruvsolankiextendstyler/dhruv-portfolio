@@ -51,6 +51,17 @@ const projects = [
     accent: 'blue',
     status: 'In development',
   },
+  {
+    number: '03',
+    title: 'Shift',
+    subtitle: 'Smart task prioritization PWA',
+    description:
+      "A focus companion that asks where your head's at, then hands you the single task worth doing next. It pairs mood-based check-ins with streaks and insight dashboards so you can track your momentum over time.",
+    stack: [['React', 'react'], ['Node.js', 'nodedotjs'], ['Express', 'express'], ['REST APIs', 'postman'], ['Render', 'render']],
+    accent: 'amber',
+    status: 'Completed',
+    link: 'https://shift-six-pi.vercel.app/',
+  },
 ]
 
 function ArrowUpRight() {
@@ -115,7 +126,7 @@ function App() {
         </section>
 
         <section className="metrics container">
-          <div><strong>02</strong><span>Selected projects</span></div><div><strong>01</strong><span>Industry internship</span></div><div><strong>7.55</strong><span>Current CGPA / 10</span></div><div><strong>∞</strong><span>Curiosity</span></div>
+          <div><strong>03</strong><span>Selected projects</span></div><div><strong>01</strong><span>Industry internship</span></div><div><strong>7.55</strong><span>Current CGPA / 10</span></div><div><strong>∞</strong><span>Curiosity</span></div>
         </section>
 
         <section id="about" className="section container about-section">
@@ -125,7 +136,7 @@ function App() {
 
         <section id="projects" className="section container projects-section">
           <div className="section-heading-row"><SectionLabel number="02">Selected projects</SectionLabel><span className="muted">Things I've built</span></div>
-          <div className="project-list">{projects.map((project, index) => <motion.article className={`project-card ${project.accent}`} key={project.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .2 }} transition={{ duration: .6, delay: index * .08 }} whileHover={{ y: -5 }}><div className="project-number">{project.number}</div><div className="project-content"><div className="project-meta"><span>{project.status}</span><span>↗</span></div><h3>{project.title}</h3><p className="project-subtitle">{project.subtitle}</p><p className="project-description">{project.description}</p><div className="tags">{project.stack.map(([item, slug]) => <span key={item}><TechIcon slug={slug} />{item}</span>)}</div></div><div className="project-shape" aria-hidden="true"><span>{project.number}</span></div></motion.article>)}</div>
+          <div className="project-list">{projects.map((project, index) => <motion.article className={`project-card ${project.accent}`} key={project.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .2 }} transition={{ duration: .6, delay: index * .08 }} whileHover={{ y: -5 }}><div className="project-number">{project.number}</div><div className="project-content"><div className="project-meta"><span>{project.status}</span>{project.link ? <a className="project-link" href={project.link} target="_blank" rel="noreferrer" aria-label={`Visit ${project.title} live site`}>Live ↗</a> : <span>↗</span>}</div><h3>{project.title}</h3><p className="project-subtitle">{project.subtitle}</p><p className="project-description">{project.description}</p><div className="tags">{project.stack.map(([item, slug]) => <span key={item}><TechIcon slug={slug} />{item}</span>)}</div></div><div className="project-shape" aria-hidden="true"><span>{project.number}</span></div></motion.article>)}</div>
         </section>
 
         <section id="experience" className="section container experience-section">
