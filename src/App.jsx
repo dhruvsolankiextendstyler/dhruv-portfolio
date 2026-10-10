@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 // Structured skill categories for intentional organization
 const skillGroups = [
@@ -40,6 +40,19 @@ const projects = [
   },
   {
     number: '02',
+    title: 'College Curriculum Feedback System',
+    subtitle: 'Academic feedback and course evaluation platform',
+    description:
+      'A structured database application developed to gather, organize, and evaluate student feedback on college coursework and academic curriculum modules. Focuses on data normalization, role-based access, and structured reports for academic reviews.',
+    stack: ['JavaScript', 'MySQL', 'HTML5', 'Web Development'],
+    status: 'Live on Cloudflare Workers',
+    isLive: true,
+    link: 'https://curriculum-feedback-form.dhruvsolanki1176.workers.dev/login',
+    type: 'Database-Driven Web Platform',
+    highlights: 'Relational schema design, structured student evaluations, departmental reporting',
+  },
+  {
+    number: '03',
     title: 'BreakBite',
     subtitle: 'Campus canteen mobile ordering platform',
     description:
@@ -49,18 +62,6 @@ const projects = [
     isLive: false,
     type: 'Cross-Platform Mobile Application',
     highlights: 'Queue dispatch workflow, live order statuses, administrative dashboard',
-  },
-  {
-    number: '03',
-    title: 'College Curriculum Feedback System',
-    subtitle: 'Academic feedback and course evaluation platform',
-    description:
-      'A structured database application developed to gather, organize, and evaluate student feedback on college coursework and academic curriculum modules. Focuses on data normalization, role-based access, and structured reports for academic reviews.',
-    stack: ['JavaScript', 'MySQL', 'HTML5', 'Web Development'],
-    status: 'Academic Project',
-    isLive: false,
-    type: 'Database-Driven Web Platform',
-    highlights: 'Relational schema design, structured student evaluations, departmental reporting',
   },
 ]
 
@@ -134,7 +135,6 @@ function SectionLabel({ number, children }) {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [copied, setCopied] = useState(false)
-  const [colophonOpen, setColophonOpen] = useState(false)
 
   const closeMenu = () => setMenuOpen(false)
 
@@ -143,17 +143,6 @@ function App() {
     setCopied(true)
     setTimeout(() => setCopied(false), 2400)
   }
-
-  // Handle Escape key for colophon modal
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape' && colophonOpen) {
-        setColophonOpen(false)
-      }
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [colophonOpen])
 
   return (
     <div className="site-shell">
@@ -190,7 +179,7 @@ function App() {
             <a href="#experience" onClick={closeMenu}>Experience</a>
             <a href="#skills" onClick={closeMenu}>Skills</a>
             <a href="#contact" className="nav-cta" onClick={closeMenu}>
-              Contact <ArrowUpRight />
+              Contact
             </a>
           </nav>
         </header>
@@ -210,14 +199,14 @@ function App() {
             </h1>
 
             <p className="hero-description">
-              I am Dhruv Solanki, a final-year Computer Science student at Mithibai College, Mumbai.
+              I am Dhruv Solanki, an undergraduate Computer Science student at Mithibai College, Mumbai.
               I build full-stack web platforms, mobile applications, and database systems with an
               emphasis on clear architecture and practical usability.
             </p>
 
             <div className="hero-actions">
               <a className="btn btn-primary" href="#projects">
-                Explore Projects <ArrowUpRight />
+                Explore Projects
               </a>
               <a className="btn btn-secondary" href="#contact">
                 Get in Touch
@@ -228,7 +217,7 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
               >
-                GitHub Profile <ArrowUpRight />
+                GitHub Profile
               </a>
             </div>
           </div>
@@ -267,7 +256,7 @@ function App() {
               </div>
               <div className="hero-card-item">
                 <span className="hero-card-label">Graduation</span>
-                <span className="hero-card-val">Class of 2026</span>
+                <span className="hero-card-val">Class of 2027</span>
               </div>
             </div>
 
@@ -299,7 +288,7 @@ function App() {
               <div className="metric-desc">B.Sc. CS at Mithibai College</div>
             </div>
             <div className="metric-item">
-              <div className="metric-num">2026</div>
+              <div className="metric-num">2027</div>
               <div className="metric-label">Undergraduate Completion</div>
               <div className="metric-desc">Seeking software engineering roles</div>
             </div>
@@ -315,7 +304,7 @@ function App() {
             </h2>
             <div className="about-content">
               <p>
-                I am currently in my final year pursuing a Bachelor of Science in Computer Science
+                I am currently pursuing a Bachelor of Science in Computer Science
                 at Mithibai College in Mumbai. My coursework and independent projects span web
                 application development, cross-platform mobile apps, relational and document
                 databases, and storefront engineering.
@@ -337,7 +326,7 @@ function App() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  View GitHub Repositories <ArrowUpRight />
+                  View GitHub Repos <ArrowUpRight />
                 </a>
                 <a
                   className="text-link"
@@ -401,8 +390,8 @@ function App() {
                     <span className="project-details-val">{project.highlights}</span>
                   </div>
 
-                  <div className="project-actions">
-                    {project.link ? (
+                  {project.link && (
+                    <div className="project-actions">
                       <a
                         className="btn btn-primary"
                         href={project.link}
@@ -410,17 +399,10 @@ function App() {
                         rel="noreferrer"
                         aria-label={`Open ${project.title} live deployment`}
                       >
-                        Open Live Application <ArrowUpRight />
+                        Open Live Application
                       </a>
-                    ) : (
-                      <span
-                        className="btn btn-subtle"
-                        style={{ cursor: 'default', opacity: 0.85 }}
-                      >
-                        Code & Architecture
-                      </span>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
               </article>
             ))}
@@ -467,6 +449,17 @@ function App() {
                   <span className="tag">HTML & CSS</span>
                   <span className="tag">Storefront APIs</span>
                   <span className="tag">E-Commerce Workflows</span>
+                </div>
+                <div className="experience-actions" style={{ marginTop: '16px' }}>
+                  <a
+                    className="btn btn-secondary"
+                    href="https://www.scentivia.shop/"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Visit Scentivia Perfumes live store"
+                  >
+                    Visit Live Store
+                  </a>
                 </div>
               </div>
             </div>
@@ -527,7 +520,7 @@ function App() {
 
               <div className="email-button-row">
                 <a className="btn btn-primary" href="mailto:dhruvds1971@gmail.com" style={{ flex: 1 }}>
-                  Compose Email <ArrowUpRight />
+                  Compose Email
                 </a>
                 <button
                   className="btn btn-secondary"
@@ -582,103 +575,12 @@ function App() {
           </div>
 
           <div className="footer-links">
-            <button
-              className="footer-link-btn"
-              onClick={() => setColophonOpen(true)}
-              type="button"
-            >
-              Privacy & Colophon
-            </button>
             <a className="footer-link-btn" href="#top">
-              Back to Top ↑
+              Back to Top
             </a>
           </div>
         </div>
       </footer>
-
-      {/* Privacy Notice & Colophon Modal */}
-      {colophonOpen && (
-        <div
-          className="modal-backdrop"
-          onClick={() => setColophonOpen(false)}
-          role="presentation"
-        >
-          <div
-            className="modal-dialog"
-            onClick={(e) => e.stopPropagation()}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="colophon-title"
-          >
-            <div className="modal-header">
-              <h3 id="colophon-title">Privacy Notice & Colophon</h3>
-              <button
-                className="modal-close"
-                onClick={() => setColophonOpen(false)}
-                aria-label="Close dialog"
-                type="button"
-              >
-                ✕
-              </button>
-            </div>
-
-            <div className="modal-body">
-              <h4>Privacy Commitment</h4>
-              <p>
-                This website is a personal developer portfolio. It does not use tracking cookies,
-                advertising beacons, analytics scripts, or behavioral tracking.
-              </p>
-              <ul>
-                <li>
-                  <strong>Data Collection:</strong> No personally identifiable information is
-                  harvested or stored on any server through this site.
-                </li>
-                <li>
-                  <strong>Communication:</strong> The contact buttons link to standard client-side
-                  <code>mailto:</code> links. Any email sent is transmitted directly through your own
-                  mail provider.
-                </li>
-                <li>
-                  <strong>External Links:</strong> This site links to external platforms including
-                  GitHub, LinkedIn, Instagram, and Vercel. Their respective privacy policies govern
-                  interactions on those services.
-                </li>
-              </ul>
-
-              <h4>Colophon & Typography</h4>
-              <p>
-                Designed with a focus on editorial clarity, high contrast, and tactile restraint.
-              </p>
-              <ul>
-                <li>
-                  <strong>Framework:</strong> Built with React 19 and Vite.
-                </li>
-                <li>
-                  <strong>Styling:</strong> Tailwind CSS v4 and custom semantic design tokens.
-                </li>
-                <li>
-                  <strong>Typefaces:</strong> Headings set in Newsreader (Production Type) and
-                  body text set in Plus Jakarta Sans (Tokotype).
-                </li>
-                <li>
-                  <strong>Accessibility:</strong> Adheres to WCAG AA contrast standards, supports
-                  keyboard navigation, and respects <code>prefers-reduced-motion</code>.
-                </li>
-              </ul>
-            </div>
-
-            <div className="modal-footer">
-              <button
-                className="btn btn-secondary"
-                onClick={() => setColophonOpen(false)}
-                type="button"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   )
 }
